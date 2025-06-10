@@ -101,6 +101,14 @@ public class ReservationService {
         return ReservationResponse.from(reservation);
     }
 
+    @Transactional
+    public void delete(final long reservationId, final long userId) {
+        Reservation reservation = reservationQueryService.findById(reservationId);
+
+        validateReservationUser(userId, reservation);
+        reservationRepository.delete(reservation);
+    }
+
     private void validateFutureDate(LocalDate date) {
         LocalDate today = LocalDate.now();
 

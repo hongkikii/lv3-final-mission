@@ -10,6 +10,7 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,14 +28,15 @@ public class ReservationController {
 
     @PostMapping
     public ResponseEntity<SuccessResponse<ReservationResponse>> create(
-            @RequestBody CreateReservationRequest request) {
-
+            @RequestBody CreateReservationRequest request
+    ) {
         return SuccessResponse.from(reservationService.create(request))
                 .asHttp(HttpStatus.CREATED);
     }
 
     @GetMapping("/all")
     public ResponseEntity<SuccessResponse<List<ReservationResponse>>> getAll() {
+
         return SuccessResponse.from(reservationService.getAll())
                 .asHttp(HttpStatus.OK);
     }
@@ -49,9 +51,18 @@ public class ReservationController {
 
     @PatchMapping
     public ResponseEntity<SuccessResponse<ReservationResponse>> update(
-            @RequestBody ModifyReservationRequest request) {
-
+            @RequestBody ModifyReservationRequest request
+    ) {
         return SuccessResponse.from(reservationService.modify(request))
                 .asHttp(HttpStatus.OK);
+    }
+
+    @DeleteMapping
+    public ResponseEntity<Void> delete(
+            @RequestParam long reservationId, @RequestParam long userId
+    ) {
+        reservationService.delete(reservationId, userId);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT)
+                .build();
     }
 }

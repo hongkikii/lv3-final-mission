@@ -24,8 +24,6 @@ public enum ErrorCode {
     // RESTAURANT
     RESTAURANT_NOT_AVAILABLE(HttpStatus.BAD_REQUEST, "RESTAURANT_NOT_AVAILABLE", "해당 시간대에 식당 이용이 불가능합니다."), ;
 
-
-
     private final HttpStatus httpStatus;
     private final String code;
     private final String message;
