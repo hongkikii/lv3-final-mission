@@ -39,24 +39,15 @@ public class ReservationService {
         long restaurantId = request.restaurantId();
         long timeId = request.timeId();
         LocalDate date = request.date();
-
-        // 오늘이나 이전 날짜면 불가능
         validateFutureDate(date);
 
-        // 존재하지 않는 사용자인지 확인
         User user = userQueryService.getBy(request.userId());
 
-        // 예약이 있으면 불가능
         RestaurantSchedule restaurantSchedule = restaurantScheduleQueryService.getBy(restaurantId, timeId, date);
         validateNotReservedSchedule(restaurantSchedule);
-
-        // 이용 가능한 스케줄이 아니면 불가능
         validateAvailableSchedule(restaurantSchedule);
-
-        // 공휴일이면 불가능
         validateNotHoliday(date);
 
-        // 성공!
         Reservation savedReservation = reservationRepository.save(
                 new Reservation(restaurantSchedule, user));
         return ReservationResponse.from(savedReservation);
@@ -80,21 +71,14 @@ public class ReservationService {
         LocalDate date = request.date();
         long timeId = request.timeId();
         long userId = request.userId();
+        validateFutureDate(date);
 
         Reservation reservation = reservationQueryService.findById(reservationId);
         validateReservationUser(userId, reservation);
 
-        // 오늘이나 과거 날짜면 못 바꿈
-        validateFutureDate(date);
-
-        // 이미 예약 있으면 못 바꿈
         RestaurantSchedule newSchedule = restaurantScheduleQueryService.getBy(timeId, date);
         validateNotReservedSchedule(newSchedule);
-
-        // 이용 가능한 스케줄이 아니어도 못 바꿈
         validateAvailableSchedule(newSchedule);
-
-        // 공휴일이면 불가능
         validateNotHoliday(date);
 
         reservation.changeSchedule(newSchedule);
