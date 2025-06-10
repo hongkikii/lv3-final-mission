@@ -24,8 +24,8 @@ public enum ErrorCode {
     // Restaurant
     RESTAURANT_NOT_AVAILABLE(HttpStatus.BAD_REQUEST, "RESTAURANT_NOT_AVAILABLE", "해당 시간대에 식당 이용이 불가능합니다."),
 
-    // External Api
-    EXTERNAL_API_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "EXTERNAL_API_ERROR" , "외부 api 호출 시 에러가 발생했습니다."),;
+    // etc
+    INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "EXTERNAL_API_ERROR" , "예기치 못한 서버 에러가 발생하였습니다."),;
 
     private final HttpStatus httpStatus;
     private final String code;

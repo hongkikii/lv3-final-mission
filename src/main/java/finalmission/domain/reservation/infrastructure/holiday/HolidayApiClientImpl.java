@@ -25,7 +25,6 @@ public class HolidayApiClientImpl implements HolidayApiClient {
         return false;
     }
 
-
     public HolidayResponse getHoliday(LocalDate date) {
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM");
