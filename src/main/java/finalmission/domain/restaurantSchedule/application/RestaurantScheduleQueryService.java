@@ -15,8 +15,13 @@ public class RestaurantScheduleQueryService {
 
     private final RestaurantScheduleRepository restaurantScheduleRepository;
 
-    public RestaurantSchedule getBy(final long restaurantId, final long timeId, final LocalDate date) {
+    public RestaurantSchedule getBy(long restaurantId, long timeId, LocalDate date) {
         return restaurantScheduleRepository.findByRestaurant_idAndTime_idAndDate(restaurantId, timeId, date)
+                .orElseThrow(RestaurantScheduleNotExistedException::new);
+    }
+
+    public RestaurantSchedule getBy(long timeId, LocalDate date) {
+        return restaurantScheduleRepository.findByTime_idAndDate(timeId, date)
                 .orElseThrow(RestaurantScheduleNotExistedException::new);
     }
 }

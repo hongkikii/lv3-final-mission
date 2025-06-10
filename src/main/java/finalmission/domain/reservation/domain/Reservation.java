@@ -46,4 +46,8 @@ public class Reservation {
     public boolean notBelongTo(final long userId) {
         return user.isNotSameBy(userId);
     }
+
+    public void changeSchedule(RestaurantSchedule restaurantSchedule) {
+        this.restaurantSchedule = restaurantSchedule;
+    }
 }

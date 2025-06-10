@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
-public record DetailReservationResponse(Long id,
+public record DetailReservationResponse(Long reservationId,
                                         String restaurantName,
                                         LocalDate date,
                                         @JsonFormat(pattern = "HH:mm") LocalTime startAt,

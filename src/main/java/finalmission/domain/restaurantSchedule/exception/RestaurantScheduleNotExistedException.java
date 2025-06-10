@@ -6,6 +6,6 @@ import finalmission.common.exception.ErrorCode;
 public class RestaurantScheduleNotExistedException extends BusinessException {
 
     public RestaurantScheduleNotExistedException() {
-        super(ErrorCode.RESTAURANT_TIME_NOT_EXISTED);
+        super(ErrorCode.RESTAURANT_SCHEDULE_NOT_EXISTED);
     }
 }

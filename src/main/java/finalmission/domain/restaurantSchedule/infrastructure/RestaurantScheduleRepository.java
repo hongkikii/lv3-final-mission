@@ -8,4 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface RestaurantScheduleRepository extends JpaRepository<RestaurantSchedule, Long> {
     Optional<RestaurantSchedule> findByRestaurant_idAndTime_idAndDate(Long restaurantId, Long timeId, LocalDate date);
 
+    Optional<RestaurantSchedule> findByTime_idAndDate(Long timeId, LocalDate date);
 }

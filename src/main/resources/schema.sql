@@ -18,9 +18,11 @@ INSERT INTO restaurants (name) VALUES ('국밥맛집');
 INSERT INTO restaurants (name) VALUES ('삼겹살맛집');
 INSERT INTO restaurants (name) VALUES ('곱창맛집');
 
--- RESTAURANT_TIME
+-- RESTAURANT_SCHEDULE
 INSERT INTO restaurant_schedules (is_available, restaurant_id, time_id, date) VALUES ('true', 1, 1, '2025-06-10');
 INSERT INTO restaurant_schedules (is_available, restaurant_id, time_id, date) VALUES ('true', 1, 2, '2025-06-10');
+INSERT INTO restaurant_schedules (is_available, restaurant_id, time_id, date) VALUES ('true', 1, 1, '2025-06-13');
+INSERT INTO restaurant_schedules (is_available, restaurant_id, time_id, date) VALUES ('false', 1, 2, '2025-06-13');
 
 INSERT INTO restaurant_schedules (is_available, restaurant_id, time_id, date) VALUES ('true', 2, 1, '2025-06-12');
 INSERT INTO restaurant_schedules (is_available, restaurant_id, time_id, date) VALUES ('true', 2, 2, '2025-06-12');

@@ -5,7 +5,7 @@ import finalmission.domain.reservation.domain.Reservation;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public record ReservationResponse(long id,
+public record ReservationResponse(long reservationId,
                                   String restaurantName,
                                   LocalDate date,
                                   @JsonFormat(pattern = "HH:mm") LocalTime startAt) {

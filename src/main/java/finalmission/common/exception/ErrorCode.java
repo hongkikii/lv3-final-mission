@@ -8,8 +8,8 @@ import org.springframework.http.HttpStatus;
 @Getter
 public enum ErrorCode {
 
-    // RestaurantTime
-    RESTAURANT_TIME_NOT_EXISTED(HttpStatus.NOT_FOUND, "RESTAURANT_TIME_NOT_EXISTED", "예약 데이터가 유효하지 않습니다."),
+    // RestaurantSchedule
+    RESTAURANT_SCHEDULE_NOT_EXISTED(HttpStatus.NOT_FOUND, "RESTAURANT_SCHEDULE_NOT_EXISTED", "예약 데이터가 유효하지 않습니다."),
 
     // Reservation
     RESERVATION_ALREADY_EXISTED(HttpStatus.CONFLICT, "RESERVATION_ALREADY_EXISTED", "이미 예약이 존재합니다."),
