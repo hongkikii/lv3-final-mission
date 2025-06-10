@@ -25,3 +25,7 @@ spring:
       ddl-auto: create
 
     defer-datasource-initialization: true
+
+api:
+  holiday:
+    secret-key: P3pO8a/vSRycTYVlaruIkzsFMtJoFmLgNc4iA/xa6hcSsczL90Zx9XDLtHFYT7BgZMWKtr6C3LKFNTmEkZctMQ==
