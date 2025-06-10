@@ -2,11 +2,13 @@ package finalmission.domain.reservation.application;
 
 import finalmission.domain.reservation.domain.Reservation;
 import finalmission.domain.reservation.dto.CreateReservationRequest;
+import finalmission.domain.reservation.dto.DetailReservationResponse;
 import finalmission.domain.reservation.dto.ReservationResponse;
 import finalmission.domain.reservation.exception.HolidayException;
+import finalmission.domain.reservation.exception.InvalidReservationUserException;
 import finalmission.domain.reservation.exception.PastDateException;
 import finalmission.domain.reservation.exception.ReservationAlreadyExistedException;
-import finalmission.domain.reservation.exception.RestaurantNotAvailableException;
+import finalmission.domain.restaurant.exception.RestaurantNotAvailableException;
 import finalmission.domain.reservation.infrastructure.ReservationRepository;
 import finalmission.domain.restaurantSchedule.application.RestaurantScheduleQueryService;
 import finalmission.domain.restaurantSchedule.domain.RestaurantSchedule;
@@ -69,8 +71,16 @@ public class ReservationService {
     }
 
     public List<ReservationResponse> getAll() {
-        return reservationRepository.findAll().stream()
+        return reservationQueryService.findAll().stream()
                 .map(ReservationResponse::from)
                 .toList();
+    }
+
+    public DetailReservationResponse getDetail(final long reservationId, final long userId) {
+        Reservation reservation = reservationQueryService.findById(reservationId);
+        if(reservation.notBelongTo(userId)) {
+            throw new InvalidReservationUserException();
+        }
+        return DetailReservationResponse.from(reservation);
     }
 }

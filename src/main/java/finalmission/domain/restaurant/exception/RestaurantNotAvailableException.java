@@ -1,4 +1,4 @@
-package finalmission.domain.reservation.exception;
+package finalmission.domain.restaurant.exception;
 
 import finalmission.common.exception.BusinessException;
 import finalmission.common.exception.ErrorCode;

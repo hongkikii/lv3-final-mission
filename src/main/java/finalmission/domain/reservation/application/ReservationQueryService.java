@@ -1,6 +1,7 @@
 package finalmission.domain.reservation.application;
 
 import finalmission.domain.reservation.domain.Reservation;
+import finalmission.domain.reservation.exception.ReservationNotFoundException;
 import finalmission.domain.reservation.infrastructure.ReservationRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -20,5 +21,10 @@ public class ReservationQueryService {
 
     public List<Reservation> findAll() {
         return reservationRepository.findAll();
+    }
+
+    public Reservation findById(Long reservationId) {
+        return reservationRepository.findById(reservationId)
+                .orElseThrow(ReservationNotFoundException::new);
     }
 }

@@ -2,6 +2,7 @@ package finalmission.domain.reservation.domain;
 
 import finalmission.domain.restaurantSchedule.domain.RestaurantSchedule;
 import finalmission.domain.user.domain.User;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -11,6 +12,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import java.time.LocalDateTime;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,8 +34,16 @@ public class Reservation {
     @JoinColumn(nullable = false, name = "user_id")
     private User user;
 
+    @Column(nullable = false, name = "created_at")
+    private LocalDateTime createdAt;
+
     public Reservation(RestaurantSchedule restaurantSchedule, User user) {
         this.restaurantSchedule = restaurantSchedule;
         this.user = user;
+        this.createdAt = LocalDateTime.now();
+    }
+
+    public boolean notBelongTo(final long userId) {
+        return user.isNotSameBy(userId);
     }
 }

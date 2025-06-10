@@ -29,5 +29,5 @@ INSERT INTO restaurant_schedules (is_available, restaurant_id, time_id, date) VA
 INSERT INTO restaurant_schedules (is_available, restaurant_id, time_id, date) VALUES ('false', 2, 5, '2025-06-12');
 
 -- RESERVATION
-INSERT into reservations (restaurant_schedule_id, user_id) VALUES (1, 1);
-INSERT into reservations (restaurant_schedule_id, user_id) VALUES (2, 2);
+INSERT into reservations (restaurant_schedule_id, user_id, created_at) VALUES (1, 1, '2025-06-09 17:00');
+INSERT into reservations (restaurant_schedule_id, user_id, created_at) VALUES (2, 2, '2025-06-09 18:00');
