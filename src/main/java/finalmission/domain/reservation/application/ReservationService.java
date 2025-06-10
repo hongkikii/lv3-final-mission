@@ -2,7 +2,7 @@ package finalmission.domain.reservation.application;
 
 import finalmission.domain.reservation.domain.Reservation;
 import finalmission.domain.reservation.dto.CreateReservationRequest;
-import finalmission.domain.reservation.dto.CreateReservationResponse;
+import finalmission.domain.reservation.dto.ReservationResponse;
 import finalmission.domain.reservation.exception.HolidayException;
 import finalmission.domain.reservation.exception.PastDateException;
 import finalmission.domain.reservation.exception.ReservationAlreadyExistedException;
@@ -13,6 +13,7 @@ import finalmission.domain.restaurantSchedule.domain.RestaurantSchedule;
 import finalmission.domain.user.application.UserQueryService;
 import finalmission.domain.user.domain.User;
 import java.time.LocalDate;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class ReservationCommandService {
+public class ReservationService {
 
     private final ReservationRepository reservationRepository;
     private final RestaurantScheduleQueryService restaurantScheduleQueryService;
@@ -31,7 +32,7 @@ public class ReservationCommandService {
     private final HolidayApiClient holidayApiClient;
 
     @Transactional
-    public CreateReservationResponse createReservation(final CreateReservationRequest request) {
+    public ReservationResponse create(CreateReservationRequest request) {
         long restaurantId = request.restaurantId();
         long timeId = request.timeId();
         LocalDate date = request.date();
@@ -64,6 +65,12 @@ public class ReservationCommandService {
 
         // 성공!
         Reservation savedReservation = reservationRepository.save(new Reservation(restaurantSchedule, user));
-        return CreateReservationResponse.from(savedReservation);
+        return ReservationResponse.from(savedReservation);
+    }
+
+    public List<ReservationResponse> getAll() {
+        return reservationRepository.findAll().stream()
+                .map(ReservationResponse::from)
+                .toList();
     }
 }

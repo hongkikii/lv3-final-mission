@@ -1,5 +1,6 @@
 -- USER
 INSERT INTO users (name) VALUES ('mimi');
+INSERT INTO users (name) VALUES ('cookie');
 
 -- TIME
 INSERT INTO times (start_at) VALUES ('10:00');
@@ -18,8 +19,15 @@ INSERT INTO restaurants (name) VALUES ('삼겹살맛집');
 INSERT INTO restaurants (name) VALUES ('곱창맛집');
 
 -- RESTAURANT_TIME
-INSERT INTO restaurant_schedules (is_available, restaurant_id, time_id, date) VALUES ('true', 1, 1, '2025-06-12');
-INSERT INTO restaurant_schedules (is_available, restaurant_id, time_id, date) VALUES ('true', 1, 2, '2025-06-12');
-INSERT INTO restaurant_schedules (is_available, restaurant_id, time_id, date) VALUES ('true', 1, 3, '2025-06-12');
-INSERT INTO restaurant_schedules (is_available, restaurant_id, time_id, date) VALUES ('true', 1, 4, '2025-06-12');
-INSERT INTO restaurant_schedules (is_available, restaurant_id, time_id, date) VALUES ('false', 1, 5, '2025-06-12');
+INSERT INTO restaurant_schedules (is_available, restaurant_id, time_id, date) VALUES ('true', 1, 1, '2025-06-10');
+INSERT INTO restaurant_schedules (is_available, restaurant_id, time_id, date) VALUES ('true', 1, 2, '2025-06-10');
+
+INSERT INTO restaurant_schedules (is_available, restaurant_id, time_id, date) VALUES ('true', 2, 1, '2025-06-12');
+INSERT INTO restaurant_schedules (is_available, restaurant_id, time_id, date) VALUES ('true', 2, 2, '2025-06-12');
+INSERT INTO restaurant_schedules (is_available, restaurant_id, time_id, date) VALUES ('true', 2, 3, '2025-06-12');
+INSERT INTO restaurant_schedules (is_available, restaurant_id, time_id, date) VALUES ('true', 2, 4, '2025-06-12');
+INSERT INTO restaurant_schedules (is_available, restaurant_id, time_id, date) VALUES ('false', 2, 5, '2025-06-12');
+
+-- RESERVATION
+INSERT into reservations (restaurant_schedule_id, user_id) VALUES (1, 1);
+INSERT into reservations (restaurant_schedule_id, user_id) VALUES (2, 2);

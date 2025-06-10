@@ -1,6 +1,8 @@
 package finalmission.domain.reservation.application;
 
+import finalmission.domain.reservation.domain.Reservation;
 import finalmission.domain.reservation.infrastructure.ReservationRepository;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,5 +16,9 @@ public class ReservationQueryService {
 
     public boolean isAlreadyExisted(Long reservationScheduleId) {
         return reservationRepository.existsByRestaurantSchedule_Id(reservationScheduleId);
+    }
+
+    public List<Reservation> findAll() {
+        return reservationRepository.findAll();
     }
 }
