@@ -1,0 +1,18 @@
+package finalmission.domain.reservation.application;
+
+import finalmission.domain.reservation.infrastructure.ReservationRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+@Service
+@RequiredArgsConstructor
+@Transactional(readOnly = true)
+public class ReservationQueryService {
+
+    private final ReservationRepository reservationRepository;
+
+    public boolean isAlreadyExisted(Long reservationScheduleId) {
+        return reservationRepository.existsByRestaurantSchedule_Id(reservationScheduleId);
+    }
+}
