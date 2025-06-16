@@ -15,6 +15,7 @@ import finalmission.domain.restaurantSchedule.application.RestaurantScheduleQuer
 import finalmission.domain.restaurantSchedule.domain.RestaurantSchedule;
 import finalmission.domain.user.application.UserQueryService;
 import finalmission.domain.user.domain.User;
+import java.time.Clock;
 import java.time.LocalDate;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -33,6 +34,7 @@ public class ReservationService {
     private final ReservationQueryService reservationQueryService;
     private final UserQueryService userQueryService;
     private final HolidayApiClient holidayApiClient;
+    private final Clock clock;
 
     @Transactional
     public ReservationResponse create(CreateReservationRequest request) {
@@ -94,7 +96,7 @@ public class ReservationService {
     }
 
     private void validateFutureDate(LocalDate date) {
-        LocalDate today = LocalDate.now();
+        LocalDate today = LocalDate.now(clock);
 
         if(date.isEqual(today) || date.isBefore(today)) {
             throw new PastDateException();
