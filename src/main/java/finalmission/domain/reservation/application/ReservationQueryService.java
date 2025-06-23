@@ -15,8 +15,8 @@ public class ReservationQueryService {
 
     private final ReservationRepository reservationRepository;
 
-    public boolean isAlreadyExisted(Long reservationScheduleId) {
-        return reservationRepository.existsBySchedule_Id(reservationScheduleId);
+    public boolean isAlreadyExisted(Long scheduleId) {
+        return reservationRepository.existsBySchedule_Id(scheduleId);
     }
 
     public List<Reservation> findAll() {

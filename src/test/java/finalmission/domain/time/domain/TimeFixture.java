@@ -9,4 +9,11 @@ public class TimeFixture {
                 .startAt(LocalTime.now())
                 .build();
     }
+
+    public static Time createTime(Long id, LocalTime startAt) {
+        return Time.builder()
+                .id(id)
+                .startAt(startAt)
+                .build();
+    }
 }
