@@ -1,9 +1,10 @@
 package finalmission.domain.reservation.dto;
 
+import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
 
-public record CreateReservationRequest(long userId,
-                                       long restaurantId,
-                                       long timeId,
-                                       LocalDate date) {
+public record CreateReservationRequest(@NotNull Long userId,
+                                       @NotNull Long restaurantId,
+                                       @NotNull Long timeId,
+                                       @NotNull LocalDate date) {
 }
