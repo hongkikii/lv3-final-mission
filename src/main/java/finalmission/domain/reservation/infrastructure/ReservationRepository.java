@@ -4,5 +4,5 @@ import finalmission.domain.reservation.domain.Reservation;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
-    boolean existsByRestaurantSchedule_Id(Long restaurantScheduleId);
+    boolean existsBySchedule_Id(Long restaurantScheduleId);
 }

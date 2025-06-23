@@ -1,5 +1,6 @@
 package finalmission.domain.reservation.infrastructure.holiday;
 
+import finalmission.common.exception.ExternalApiException;
 import finalmission.domain.reservation.application.HolidayApiClient;
 import finalmission.domain.reservation.infrastructure.holiday.dto.HolidayResponse;
 import java.time.LocalDate;
@@ -23,11 +24,16 @@ public class HolidayApiClientImpl implements HolidayApiClient {
 
     @Override
     public boolean isHoliday(final LocalDate date) {
-        HolidayResponse response = getHoliday(date);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
         String formattedDate = date.format(formatter);
-        return response.response().body().items().item().stream()
-                .anyMatch(item -> item.locdate().equals(formattedDate));
+
+        return getHoliday(date)
+                .response()
+                .body()
+                .items()
+                .item()
+                .stream()
+                .anyMatch(item -> String.valueOf(item.locdate()).equals(formattedDate));
     }
 
     public HolidayResponse getHoliday(LocalDate date) {

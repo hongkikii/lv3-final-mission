@@ -1,4 +1,4 @@
-package finalmission.domain.restaurantSchedule.domain;
+package finalmission.domain.schedule.domain;
 
 import finalmission.domain.restaurant.domain.Restaurant;
 import finalmission.domain.time.domain.Time;
@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "restaurant_schedules")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public class RestaurantSchedule {
+public class Schedule {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

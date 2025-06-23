@@ -12,8 +12,8 @@ public record ReservationResponse(long reservationId,
 
     public static ReservationResponse from(Reservation reservation) {
         return new ReservationResponse(reservation.getId(),
-                reservation.getRestaurantSchedule().getRestaurant().getName(),
-                reservation.getRestaurantSchedule().getDate(),
-                reservation.getRestaurantSchedule().getTime().getStartAt());
+                reservation.getSchedule().getRestaurant().getName(),
+                reservation.getSchedule().getDate(),
+                reservation.getSchedule().getTime().getStartAt());
     }
 }

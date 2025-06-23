@@ -16,9 +16,9 @@ public record DetailReservationResponse(Long reservationId,
     public static DetailReservationResponse from(final Reservation reservation) {
         return new DetailReservationResponse(
                 reservation.getId(),
-                reservation.getRestaurantSchedule().getRestaurant().getName(),
-                reservation.getRestaurantSchedule().getDate(),
-                reservation.getRestaurantSchedule().getTime().getStartAt(),
+                reservation.getSchedule().getRestaurant().getName(),
+                reservation.getSchedule().getDate(),
+                reservation.getSchedule().getTime().getStartAt(),
                 reservation.getUser().getName(),
                 reservation.getCreatedAt()
         );

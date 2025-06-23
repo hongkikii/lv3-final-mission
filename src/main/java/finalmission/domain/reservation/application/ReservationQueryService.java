@@ -16,14 +16,14 @@ public class ReservationQueryService {
     private final ReservationRepository reservationRepository;
 
     public boolean isAlreadyExisted(Long reservationScheduleId) {
-        return reservationRepository.existsByRestaurantSchedule_Id(reservationScheduleId);
+        return reservationRepository.existsBySchedule_Id(reservationScheduleId);
     }
 
     public List<Reservation> findAll() {
         return reservationRepository.findAll();
     }
 
-    public Reservation findById(Long reservationId) {
+    public Reservation getBy(Long reservationId) {
         return reservationRepository.findById(reservationId)
                 .orElseThrow(ReservationNotFoundException::new);
     }

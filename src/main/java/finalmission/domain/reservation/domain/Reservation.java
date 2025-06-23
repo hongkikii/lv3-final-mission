@@ -1,6 +1,6 @@
 package finalmission.domain.reservation.domain;
 
-import finalmission.domain.restaurantSchedule.domain.RestaurantSchedule;
+import finalmission.domain.schedule.domain.Schedule;
 import finalmission.domain.user.domain.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,7 +28,7 @@ public class Reservation {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable = false, name = "restaurant_schedule_id")
-    private RestaurantSchedule restaurantSchedule;
+    private Schedule schedule;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(nullable = false, name = "user_id")
@@ -37,8 +37,8 @@ public class Reservation {
     @Column(nullable = false, name = "created_at")
     private LocalDateTime createdAt;
 
-    public Reservation(RestaurantSchedule restaurantSchedule, User user) {
-        this.restaurantSchedule = restaurantSchedule;
+    public Reservation(Schedule schedule, User user) {
+        this.schedule = schedule;
         this.user = user;
         this.createdAt = LocalDateTime.now();
     }
@@ -47,7 +47,7 @@ public class Reservation {
         return user.isNotSameBy(userId);
     }
 
-    public void changeSchedule(RestaurantSchedule restaurantSchedule) {
-        this.restaurantSchedule = restaurantSchedule;
+    public void changeSchedule(Schedule schedule) {
+        this.schedule = schedule;
     }
 }
