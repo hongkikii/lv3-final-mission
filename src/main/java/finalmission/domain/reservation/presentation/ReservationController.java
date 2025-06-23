@@ -1,15 +1,11 @@
 package finalmission.domain.reservation.presentation;
 
 import finalmission.common.dto.SuccessResponse;
-import finalmission.domain.reservation.application.HolidayApiClient;
 import finalmission.domain.reservation.dto.CreateReservationRequest;
 import finalmission.domain.reservation.dto.DetailReservationResponse;
 import finalmission.domain.reservation.dto.ModifyReservationRequest;
 import finalmission.domain.reservation.dto.ReservationResponse;
 import finalmission.domain.reservation.application.ReservationService;
-import finalmission.domain.reservation.infrastructure.holiday.HolidayApiClientImpl;
-import finalmission.domain.reservation.infrastructure.holiday.HolidayResponse;
-import java.time.LocalDate;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
