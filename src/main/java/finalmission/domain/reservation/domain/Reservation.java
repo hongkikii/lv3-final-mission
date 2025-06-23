@@ -44,6 +44,7 @@ public class Reservation {
     public Reservation(Schedule schedule, User user) {
         this.schedule = schedule;
         this.user = user;
+        this.createdAt = LocalDateTime.now();
     }
 
     public boolean notBelongTo(long userId) {
