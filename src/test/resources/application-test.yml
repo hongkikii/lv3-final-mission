@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: lv3-final-mission
+  config:
+    import: optional:file:.env[.properties]
+
+  datasource:
+    url: jdbc:h2:mem:test
+
+  jpa:
+    show-sql: true
+
+    properties:
+      hibernate:
+        format_sql: true
+
+    hibernate:
+      ddl-auto: validate
+
+  sql:
+    init:
+      mode: never
+
+  h2:
+    console:
+      enabled: true
+
+api:
+  holiday:
+    secret-key: test-api-holiday-key
