@@ -87,10 +87,10 @@ jobs:
           push: true
           platforms: linux/arm64
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/lv3:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/lv3:${{ github.sha }}
-          cache-from: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/lv3:buildcache
-          cache-to: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/lv3:buildcache,mode=max
+            ${{ secrets.DOCKERHUB_USERNAME }}/mimi-dev:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/mimi-dev:${{ github.sha }}
+          cache-from: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/mimi-dev:buildcache
+          cache-to: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/mimi-dev:buildcache,mode=max
 
       - name: Save image tag to file
         run: echo ${{ github.sha }} > ./image-tag.txt
